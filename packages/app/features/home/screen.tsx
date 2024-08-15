@@ -10,7 +10,7 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
-import { ChevronDown, ChevronUp, X } from '@tamagui/lucide-icons'
+import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { useState } from 'react'
 import { Platform } from 'react-native'
 import { useLink } from 'solito/navigation'
@@ -18,7 +18,7 @@ import { useLink } from 'solito/navigation'
 export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
   const linkTarget = pagesMode ? '/pages-example-user' : '/user'
   const linkProps = useLink({
-    href: `${linkTarget}/nate`,
+    href: `${linkTarget}/1`,
   })
 
   return (
