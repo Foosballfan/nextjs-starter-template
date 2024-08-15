@@ -56,10 +56,7 @@ export const config = createTamagui({
   shouldAddPrefersColorThemes: true,
   themeClassNameOnRoot: true,
 
-  // highly recommended to turn this on if you are using shorthands
-  // to avoid having multiple valid style keys that do the same thing
-  // we leave it off by default because it can be confusing as you onboard.
-  onlyAllowShorthands: false,
+  onlyAllowShorthands: true,
   shorthands,
 
   fonts: {
