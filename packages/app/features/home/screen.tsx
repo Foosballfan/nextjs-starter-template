@@ -80,7 +80,7 @@ function SheetDemo() {
         onPositionChange={setPosition}
         dismissOnSnapToBottom
       >
-        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+        <Sheet.Overlay animation="lazy" />
         <Sheet.Handle bg="$gray8" />
         <Sheet.Frame ai="center" jc="center" gap="$10" bg="$color2">
           <XStack gap="$2">
@@ -88,12 +88,7 @@ function SheetDemo() {
             <Anchor col="$blue10" href="https://twitter.com/natebirdman" target="_blank">
               @natebirdman,
             </Anchor>
-            <Anchor
-              color="$purple10"
-              href="https://github.com/tamagui/tamagui"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Anchor href="https://github.com/tamagui/tamagui" target="_blank" rel="noreferrer">
               give it a ⭐️
             </Anchor>
           </XStack>

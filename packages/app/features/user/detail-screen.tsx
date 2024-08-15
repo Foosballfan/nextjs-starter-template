@@ -14,12 +14,8 @@ export const UserDetailScreen = observer(function UserDetailScreen() {
       <Paragraph ta="center" fow="700" col="$blue10">
         {user?.name ? `User logged in with ID: ${id} and name: ${user.name}` : 'User not logged in'}
       </Paragraph>
-      <Button icon={ChevronLeft} onPress={() => login()}>
-        Login
-      </Button>
-      <Button icon={ChevronLeft} onPress={() => logout()}>
-        Logout
-      </Button>
+      <Button onPress={() => login()}>Login</Button>
+      <Button onPress={() => logout()}>Logout</Button>
       <Button icon={ChevronLeft} onPress={() => router.back()}>
         Go Home
       </Button>
