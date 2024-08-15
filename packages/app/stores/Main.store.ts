@@ -1,10 +1,10 @@
-import { useToastController } from '@my/ui'
 import { makeAutoObservable } from 'mobx'
+import { TToast } from './storeTypes'
 
 export default class MainStore {
   initialized = false
 
-  constructor(private toast: ReturnType<typeof useToastController>) {
+  constructor(private toast: TToast) {
     makeAutoObservable(this)
   }
 
