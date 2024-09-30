@@ -1,13 +1,19 @@
 import { ReactNode, createContext, useContext } from 'react'
-import MainStore from './Main.store'
 import { useToastController } from '@my/ui'
+import UploadPresenter from '../features/upload/upload.presenter'
+import HomePresenter from '../features/home/home.presenter'
+import CatStore from './Cat.store'
 
 type TStores = {
-  mainStore: MainStore
+  catStore: CatStore
+  uploadPresenter: UploadPresenter
+  homePresenter: HomePresenter
 }
 
 // holds a reference to the store (singleton)
-let mainStore: MainStore
+let catStore: CatStore
+let uploadPresenter: UploadPresenter
+let homePresenter: HomePresenter
 
 // create the context
 const StoreContext = createContext<TStores | undefined>(undefined)
@@ -16,10 +22,14 @@ const StoreContext = createContext<TStores | undefined>(undefined)
 export function StoresProvider({ children }: { children: ReactNode }) {
   //only create the store once ( store is a singleton)
   const toast: ReturnType<typeof useToastController> = useToastController()
-  mainStore = mainStore ?? new MainStore(toast)
+  catStore = catStore ?? new CatStore(toast)
+  uploadPresenter = uploadPresenter ?? new UploadPresenter(toast)
+  homePresenter = homePresenter ?? new HomePresenter(toast, catStore)
 
   const root: TStores = {
-    mainStore,
+    catStore,
+    uploadPresenter,
+    homePresenter,
   }
 
   return <StoreContext.Provider value={root}>{children}</StoreContext.Provider>

@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import MainStore from 'app/stores/Main.store'
-import { UserDetailScreen } from 'app/features/user/detail-screen'
+import CatStore from 'app/stores/Cat.store'
+import { UserDetailScreen } from 'app/features/upload/detail-screen'
 import { ToastMock } from '../mocks/toastMock'
 import { describe, expect, it } from '@jest/globals'
 
 describe('TodoList.functional', async () => {
   it('filters todos', async () => {
-    const store = new MainStore(ToastMock)
+    const store = new CatStore(ToastMock)
 
     render(<UserDetailScreen />)
 

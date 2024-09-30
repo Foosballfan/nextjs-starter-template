@@ -31,8 +31,12 @@
   "dependencies": {
     "@babel/runtime": "^7.24.6",
     "@manypkg/cli": "^0.21.4",
+    "@shopify/flash-list": "^1.7.1",
+    "@thatapicompany/thecatapi": "^1.0.2",
     "check-dependency-version-consistency": "^4.1.0",
     "eslint": "^9.3.0",
+    "expo-image-picker": "^15.0.7",
+    "expo-screen-orientation": "~7.0.5",
     "mobx": "^6.13.1",
     "mobx-react-lite": "^4.0.7",
     "node-gyp": "^10.1.0",
