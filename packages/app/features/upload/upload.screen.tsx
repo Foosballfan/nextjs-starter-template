@@ -32,7 +32,14 @@ export const UploadScreen = observer(function UploadScreen() {
       {selectedImage && (
         <YStack gap="$4">
           <Image source={{ uri: selectedImage.uri }} style={{ width: 200, height: 200 }} />
-          <Button onPress={() => uploadImage(selectedImage)}>Upload Image</Button>
+          <Button
+            onPress={async () => {
+              const result = await uploadImage(selectedImage)
+              if (result) router.push('/')
+            }}
+          >
+            Upload Image
+          </Button>
         </YStack>
       )}
       <XStack gap="$4">
