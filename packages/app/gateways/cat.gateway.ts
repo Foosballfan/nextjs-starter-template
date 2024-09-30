@@ -1,5 +1,5 @@
 const API_URL = 'https://api.thecatapi.com/v1'
-const API_KEY = 'live_51Q3VTSkEJ1Q29e20CHDfVYDhCazWmJHbAUBtUwfBp3UMj0LVj3HLKjC5VuZZVK7'
+const API_KEY = ''
 import { TheCatAPI } from '@thatapicompany/thecatapi'
 const theCatAPI = new TheCatAPI(API_KEY)
 
