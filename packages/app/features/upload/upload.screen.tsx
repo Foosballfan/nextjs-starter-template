@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Image, YStack } from '@my/ui'
+import { Button, Image, XStack, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
 import { observer } from 'mobx-react-lite'
 import { useStores } from 'app/stores/StoreProvider'
@@ -28,17 +28,19 @@ export const UploadScreen = observer(function UploadScreen() {
   }
 
   return (
-    <YStack f={1} jc="center" ai="center" gap="$4" bg="$background">
-      <Button icon={ChevronLeft} onPress={() => router.back()}>
-        Go Home
-      </Button>
-      <Button onPress={pickImage}>Pick an Image</Button>
+    <YStack f={1} jc="center" ai="center" gap="$8" bg="$background">
       {selectedImage && (
-        <YStack>
+        <YStack gap="$4">
           <Image source={{ uri: selectedImage.uri }} style={{ width: 200, height: 200 }} />
           <Button onPress={() => uploadImage(selectedImage)}>Upload Image</Button>
         </YStack>
       )}
+      <XStack gap="$4">
+        <Button icon={ChevronLeft} onPress={() => router.back()}>
+          Go Home
+        </Button>
+        <Button onPress={pickImage}>Pick an Image</Button>
+      </XStack>
     </YStack>
   )
 })

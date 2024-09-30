@@ -16,16 +16,18 @@ export default class UploadPresenter {
     return blob
   }
 
+  // this is working on next.js but not on expo
+  // seems to be an issue with the server compatibility
   uploadImage = async (file: ICatImageUpload) => {
     try {
       const imageBlob = await this.fetchImageFromUri(file.uri)
-      const fileObject = new File([imageBlob], file.name)
-      const response = await this.catGateway.uploadCatImage(fileObject)
-      // uploadImageNPMLibrary(fileObject)
+      // const fileObject = new File([imageBlob], file.name)
+      const response = await this.catGateway.uploadCatImage(imageBlob)
+      // const response = await this.catGateway.uploadImageNPMLibrary(fileObject)
       this.toast.show('Image uploaded successfully')
       return response
     } catch (error) {
-      this.toast.show('Error uploading image')
+      this.toast.show(`Error uploading image `)
     }
   }
 }

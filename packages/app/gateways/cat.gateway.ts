@@ -61,7 +61,6 @@ class CatGateway {
       method: 'POST',
       headers: {
         'x-api-key': API_KEY,
-        'Content-Type': 'multipart/form-data',
       },
       body,
     })
@@ -76,7 +75,7 @@ class CatGateway {
     return uploadedImage
   }
 
-  async uploadCatImage(file: File) {
+  async uploadCatImage(file: Blob) {
     const formData = new FormData()
     formData.append('file', file)
     try {
