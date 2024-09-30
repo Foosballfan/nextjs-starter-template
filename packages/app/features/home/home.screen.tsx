@@ -1,10 +1,10 @@
-import { Anchor, Button, H1, Image, Paragraph, XStack, YStack, useWindowDimensions } from '@my/ui'
+import { Button, XStack, YStack, useWindowDimensions } from '@my/ui'
 import { MasonryFlashList } from '@shopify/flash-list'
-import { ArrowDown, ArrowUp, Heart, HeartOff } from '@tamagui/lucide-icons'
 import { useStores } from 'app/stores/StoreProvider'
 import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { useLink } from 'solito/navigation'
+import CatItem from './CatItem'
 
 export const HomeScreen = observer(function HomeScreen() {
   const linkProps = useLink({ href: `/upload` })
@@ -26,33 +26,15 @@ export const HomeScreen = observer(function HomeScreen() {
           optimizeItemArrangement={true}
           data={cats}
           numColumns={columns}
-          renderItem={({ item }) => {
-            const upvotes = item.votes?.filter((vote) => vote.value > 0).length
-            const downvotes = item.votes?.filter((vote) => vote.value < 0).length
-            return (
-              <>
-                <YStack>
-                  <Image src={item.url} style={{ height: calculateItemHeight(item) }} />
-                  <Button
-                    pos="absolute"
-                    b="$2"
-                    r="$2"
-                    icon={item.favourite ? <Heart fill="red" /> : <HeartOff />}
-                    onPress={() =>
-                      item.favourite ? unfavouriteCat(item.id) : favouriteCat(item.id)
-                    }
-                  />
-                </YStack>
-                <XStack ai="center" gap="$2" p="$2" jc="center">
-                  <Paragraph>Vote: </Paragraph>
-                  <Button size="$2" icon={ArrowUp} onPress={() => voteForCat(item.id, 1)} />
-                  <Button size="$2" icon={ArrowDown} onPress={() => voteForCat(item.id, -1)} />
-                  <XStack f={1} />
-                  <Paragraph>Cat score: {upvotes - downvotes}</Paragraph>
-                </XStack>
-              </>
-            )
-          }}
+          renderItem={({ item }) => (
+            <CatItem
+              item={item}
+              calculateItemHeight={calculateItemHeight}
+              favouriteCat={favouriteCat}
+              unfavouriteCat={unfavouriteCat}
+              voteForCat={voteForCat}
+            />
+          )}
           estimatedItemSize={200}
           overrideItemLayout={(layoutObject, sourceData) => {
             layoutObject.size = calculateItemHeight(sourceData)
